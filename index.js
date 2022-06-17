@@ -56,7 +56,7 @@ try{
 client.on('messageCreate', async (messageCreate) => {
   if (messageCreate.content === '!lumiere help') {
     axios.get(`https://api.opensea.io/api/v1/collection/boredapeyachtclub`, {
-      headers = {
+      headers : {
     "Accept": "application/json",
     "X-API-KEY": "MODULE API KEY HERE"
 }
@@ -73,10 +73,9 @@ client.on('messageCreate', async (messageCreate) => {
                     { name: 'Latest Listing', value: '`!help listing`', inline: true },
                     { name: 'Trending', value: '`!help trending`', inline: true },
                     { name: 'Estimate', value: '`!help estimate`', inline: true },
-                  )
+                )
                 .setTimestamp()
-            messageCreate.channel.send({embeds: [infoEmbed2]})
- } catch (err) {
+            message.channel.send({embeds: [infoEmbed2]})}).catch (err) 
   console.log("An error occurred: " + err)
 }
 })
@@ -84,7 +83,7 @@ client.on('messageCreate', async (messageCreate) => {
 client.on('messageCreate', async (messageCreate) => {
   if (messageCreate.content === '!help scrape') {
     axios.get(`https://api.opensea.io/api/v1/collection/boredapeyachtclub`, {
-      headers = {
+      headers : {
     "Accept": "application/json",
     "X-API-KEY": "MODULE API KEY HERE"
 }
@@ -100,16 +99,15 @@ client.on('messageCreate', async (messageCreate) => {
                     { name: 'Arguments', value: '`name: collection slug (Eg: azuki)`', inline: true },
                   )
                 .setTimestamp()
-            messageCreate.channel.send({embeds: [infoEmbed2]})
- } catch (err) {
+            messageCreate.channel.send({embeds: [infoEmbed2]}).catch (err) 
   console.log("An error occurred: " + err)
-}
 })
+}
 
 client.on('messageCreate', async (messageCreate) => {
   if (messageCreate.content === '!help collection') {
     axios.get(`https://api.opensea.io/api/v1/collection/boredapeyachtclub`, {
-      headers = {
+      headers : {
     "Accept": "application/json",
     "X-API-KEY": "MODULE API KEY HERE"
 }
@@ -125,8 +123,7 @@ client.on('messageCreate', async (messageCreate) => {
                     { name: 'Arguments', value: '`name: collection slug (Eg: azuki)`', inline: true },
                   )
                 .setTimestamp()
-            messageCreate.channel.send({embeds: [infoEmbed2]})
- } catch (err) {
+            messageCreate.channel.send({embeds: [infoEmbed2]})}).catch (err) 
   console.log("An error occurred: " + err)
 }
 })
@@ -134,7 +131,7 @@ client.on('messageCreate', async (messageCreate) => {
 client.on('messageCreate', async (messageCreate) => {
   if (messageCreate.content === '!help sale') {
     axios.get(`https://api.opensea.io/api/v1/collection/boredapeyachtclub`, {
-       headers = {
+       headers : {
     "Accept": "application/json",
     "X-API-KEY": "MODULE API KEY HERE"
 }
@@ -150,16 +147,15 @@ client.on('messageCreate', async (messageCreate) => {
                     { name: 'Arguments', value: '`name: collection slug (Eg: azuki)`', inline: true },
                   )
                 .setTimestamp()
-            messageCreate.channel.send({embeds: [infoEmbed2]})
- } catch (err) {
+            messageCreate.channel.send({embeds: [infoEmbed2]}).catch (err) 
   console.log("An error occurred: " + err)
-}
 })
+}
 
 client.on('messageCreate', async (messageCreate) => {
   if (messageCreate.content === '!help listing') {
     axios.get(`https://api.opensea.io/api/v1/collection/boredapeyachtclub`, {
-      headers = {
+      headers : {
     "Accept": "application/json",
     "X-API-KEY": "MODULE API KEY HERE"
 }
@@ -175,16 +171,15 @@ client.on('messageCreate', async (messageCreate) => {
                     { name: 'Arguments', value: '`name: collection slug (Eg: azuki)`', inline: true },
                   )
                 .setTimestamp()
-            messageCreate.channel.send({embeds: [infoEmbed2]})
- } catch (err) {
+            messageCreate.channel.send({embeds: [infoEmbed2]}).catch (err) 
   console.log("An error occurred: " + err)
-}
 })
+}
 
 client.on('messageCreate', async (messageCreate) => {
   if (messageCreate.content === '!help trending') {
     axios.get(`https://api.opensea.io/api/v1/collection/boredapeyachtclub`, {
-      headers = {
+      headers : {
     "Accept": "application/json",
     "X-API-KEY": "MODULE API KEY HERE"
 }
@@ -199,16 +194,15 @@ client.on('messageCreate', async (messageCreate) => {
                 { name: 'Usage', value: '`!trending`', inline: true },
                   )
                 .setTimestamp()
-            messageCreate.channel.send({embeds: [infoEmbed2]})
- } catch (err) {
+            messageCreate.channel.send({embeds: [infoEmbed2]}).catch (err) 
   console.log("An error occurred: " + err)
-}
 })
+}
 
 client.on('messageCreate', async (messageCreate) => {
   if (messageCreate.content === '!help estimate') {
     axios.get(`https://api.opensea.io/api/v1/collection/boredapeyachtclub`, {
-      headers = {
+      headers : {
     "Accept": "application/json",
     "X-API-KEY": "MODULE API KEY HERE"
 }
@@ -225,16 +219,15 @@ client.on('messageCreate', async (messageCreate) => {
                   { name: 'Arguments', value: '`contract: the contract address of the collection (Eg: Azuki contract: 0xed5af388653567af2f388e6224dc7c4b3241c544)) `', inline: false },
                   )
                 .setTimestamp()
-            messageCreate.channel.send({embeds: [infoEmbed2]})
- } catch (err) {
+            messageCreate.channel.send({embeds: [infoEmbed2]}).catch (err) 
   console.log("An error occurred: " + err)
-}
 })
+}
 
 client.on('messageCreate', async (messageCreate) => {
   if (messageCreate.content === '!trending') {
     axios.get(`https://api.modulenft.xyz/api/v1/opensea/collection/rankings?sort_by=SEVEN_DAY_VOLUME&count=5&offset=0`, {
-      headers = {
+      headers : {
     "Accept": "application/json",
     "X-API-KEY": "MODULE API KEY HERE"
 }
@@ -267,12 +260,11 @@ client.on('messageCreate', async (messageCreate) => {
                   { name: '`1 Day Volume`', value: `${JSON.stringify(Math.round(response.data.rankings[4].statistics.oneDayVolume* 1) /1)}`, inline: true },
                   )
                 .setTimestamp()
-            messageCreate.channel.send({embeds: [infoEmbed2]})
- } catch (err) {
+            messageCreate.channel.send({embeds: [infoEmbed2]}).catch (err) 
   console.log("An error occurred: " + err)
+})
 }
 })
-
 
 client.on('message', async (message) => {
     const args = message.content.trim().split(/ +/g);
@@ -280,9 +272,10 @@ client.on('message', async (message) => {
     if(message.author.bot) return;
     if(cmd == "collection") { 
     axios.get(`https://api.modulenft.xyz/api/v1/opensea/collection/info?type=${args[1]}`, {
-      headers = {
+      headers : {
     "Accept": "application/json",
     "X-API-KEY": "MODULE API KEY HERE"
+
 }
             }).then(response => {
             console.log(response.data);
@@ -303,9 +296,9 @@ client.on('message', async (message) => {
                   { name: '`Social Media:`', value: `[Website](${response.data.info.externalUrl})\n[Discord](${response.data.info.discordUrl})\n[Twitter](https://twitter.com/${response.data.info.connectedTwitterUsername})`, inline: true },
                   )
                 .setTimestamp()
-            message.channel.send({embeds: [infoEmbed2]})
- } catch (err) {
+            message.channel.send({embeds: [infoEmbed2]}).catch (err) 
   console.log("An error occurred: " + err)
+})
 }
 })
 
@@ -316,7 +309,7 @@ client.on('message', async (message) => {
     if(message.author.bot) return;
     if(cmd == "estimate") { 
     axios.get(`https://api.modulenft.xyz/api/v1/opensea/token/value?tokenId=${args[1]}&collection=${args[2]}`, {
-      headers = {
+      headers : {
     "Accept": "application/json",
     "X-API-KEY": "MODULE API KEY HERE"
 }
@@ -335,9 +328,9 @@ client.on('message', async (message) => {
                   { name: '`Price:`', value: `**${response.data.info.price}**`, inline: true },
                   )
                 .setTimestamp()
-            message.channel.send({embeds: [infoEmbed2]})
- } catch (err) {
+            message.channel.send({embeds: [infoEmbed2]}).catch (err) 
   console.log("An error occurred: " + err)
+})
 }
 })
 
@@ -347,7 +340,7 @@ client.on('message', async (message) => {
     if(message.author.bot) return;
     if(cmd == "listing") { 
     axios.get(`https://api.modulenft.xyz/api/v1/opensea/listings/new-listings?type=${args[1]}&count=1&currencySymbol=ETH`, {
-      headers = {
+      headers : {
     "Accept": "application/json",
     "X-API-KEY": "MODULE API KEY HERE"
 }
@@ -366,18 +359,19 @@ client.on('message', async (message) => {
                   { name: 'TokenId:', value: `${response.data.listings[0].tokenId}`, inline: false },
                 )
                 .setTimestamp()
-            message.channel.send({embeds: [infoEmbed2]})
- } catch (err) {
+            message.channel.send({embeds: [infoEmbed2]}).catch (err) 
   console.log("An error occurred: " + err)
-}
 })
+    }
+})
+
 client.on('message', async (message) => {
     const args = message.content.trim().split(/ +/g);
     const cmd = args[0].slice(prefix.length).toLowerCase();
     if(message.author.bot) return;
     if(cmd == "sale") { 
     axios.get(`https://api.modulenft.xyz/api/v1/opensea/orders/sales?type=${args[1]}&count=20&currencySymbol=ETH`, {
-      headers = {
+      headers : {
     "Accept": "application/json",
     "X-API-KEY": "MODULE API KEY HERE"
 }
@@ -398,10 +392,10 @@ client.on('message', async (message) => {
                 { name: 'To:', value: `[${response.data.sales[0].to}](https://etherscan.io/address/${response.data.sales[0].to})`, inline: false },
                 )
                 .setTimestamp()
-            message.channel.send({embeds: [infoEmbed2]})
- } catch (err) {
+            message.channel.send({embeds: [infoEmbed2]}).catch (err) 
   console.log("An error occurred: " + err)
-}
+})
+    }
 })
 
 client.on('message', async (message) => {
@@ -410,7 +404,7 @@ client.on('message', async (message) => {
     if(message.author.bot) return;
     if(cmd == "scrape") { 
         axios.get(`https://api.opensea.io/api/v1/collection/${args[1]}`, {
-      headers = {
+      headers : {
     "Accept": "application/json",
     "X-API-KEY": "MODULE API KEY HERE"
 }
@@ -435,10 +429,29 @@ client.on('message', async (message) => {
                     { name: 'Thirty Day Average price:', value: `${Math.round(response.data.collection.stats.thirty_day_average_price * 1000) /1000}Ξ | ${Math.round(response.data.collection.stats.thirty_day_change* 1000) /1000}%`, inline: false },
                 )
                 .setTimestamp()
-            message.channel.send({embeds: [infoEmbed]})
- } catch (err) {
-  console.log("An error occurred: " + err)
+            message.channel.send({embeds: [infoEmbed]}).catch (err) 
+        }).catch(function (error) {
+        // Catch errors
+        if (error.response) {
+            let errorMessage = notFoundError;
+            // If statuscode is different from 404, send the statuscode to the user.
+            if (error.response.status !== 404) {
+                errorMessage = `:monkey_face: **${error.response.status}** Please try again later.`;
+            }
+            // Send error message
+            message.channel.send(`${errorMessage}`);
+        } else if (error.request) {
+            message.channel.send(`:monkey_face: **Request Error**`);
+        } else {
+            message.channel.send(`:monkey_face: **${error.message}**`);
+        }
+    })
 }
 })
+})
+})
+})
+})
+});
 
 client.login("TOKEN HERE");
