@@ -215,6 +215,139 @@ client.on('messageCreate', async (messageCreate) => {
             messageCreate.channel.send({embeds: [infoEmbed2]})
         })
     }
+})
+
+client.on('messageCreate', async (messageCreate) => {
+  if (messageCreate.content === '!trending') {
+    axios.get(`https://api.modulenft.xyz/api/v1/opensea/collection/rankings?sort_by=SEVEN_DAY_VOLUME&count=5&offset=0`, {
+            headers: {
+                'Accept': 'application/json',
+            }
+            }).then(response => {
+            console.log(response.data);
+            const infoEmbed2 = new MessageEmbed()
+                .setColor('#ffffff')
+                .setTitle('Top collections over the last 7 days')
+                .setFooter("Lumiere Tools",'https://media.discordapp.net/attachments/943189337766506557/964903847392870430/Lumiere_AI_logo.png?width=1365&height=1365')
+                .addFields(
+                  { name: '`Collection Name`', value: `[${response.data.rankings[0].collection_name}](https://opensea.io/collection/${response.data.rankings[0].collection_slug})`, inline: false },
+                  { name: '`Floor Price`', value: `${JSON.stringify(Math.round(response.data.rankings[0].statistics.floor * 1000) /1000)}`, inline: true },
+                  { name: '`7 Day Volume`', value: `${JSON.stringify(Math.round(response.data.rankings[0].statistics.sevenDayVolume * 1) /1)}`, inline: true },
+                  { name: '`1 Day Volume`', value: `${JSON.stringify(Math.round(response.data.rankings[0].statistics.oneDayVolume* 1) /1)}`, inline: true },
+                  { name: '`Collection Name`', value: `[${response.data.rankings[1].collection_name}](https://opensea.io/collection/${response.data.rankings[1].collection_slug})`, inline: false },
+                  { name: '`Floor Price`', value: `${JSON.stringify(Math.round(response.data.rankings[1].statistics.floor * 1000) /1000)}`, inline: true },
+                  { name: '`7 Day Volume`', value: `${JSON.stringify(Math.round(response.data.rankings[1].statistics.sevenDayVolume* 1) /1)}`, inline: true },
+                  { name: '`1 Day Volume`', value: `(${JSON.stringify(Math.round(response.data.rankings[1].statistics.oneDayVolume* 1) /1)}`, inline: true },
+                  { name: '`Collection Name`', value: `[${response.data.rankings[2].collection_name}](https://opensea.io/collection/${response.data.rankings[2].collection_slug})`, inline: false },
+                  { name: '`Floor Price`', value: `${JSON.stringify(Math.round(response.data.rankings[2].statistics.floor * 1000) /1000)}`, inline: true },
+                  { name: '`7 Day Volume`', value: `${JSON.stringify(Math.round(response.data.rankings[2].statistics.sevenDayVolume* 1) /1)}`, inline: true },
+                  { name: '`1 Day Volume`', value: `${JSON.stringify(Math.round(response.data.rankings[2].statistics.oneDayVolume* 1) /1)}`, inline: true },
+                  { name: '`Collection Name`', value: `[${response.data.rankings[3].collection_name}](https://opensea.io/collection/${response.data.rankings[3].collection_slug})`, inline: false },
+                  { name: '`Floor Price`', value: `${JSON.stringify(Math.round(response.data.rankings[3].statistics.floor * 1000) /1000)}`, inline: true },
+                  { name: '`7 Day Volume`', value: `${JSON.stringify(Math.round(response.data.rankings[3].statistics.sevenDayVolume* 1) /1)}`, inline: true },
+                  { name: '`1 Day Volume`', value: `(${JSON.stringify(Math.round(response.data.rankings[3].statistics.oneDayVolume* 1) /1)}`, inline: true },
+                  { name: '`Collection Name`', value: `[${response.data.rankings[4].collection_name}](https://opensea.io/collection/${response.data.rankings[4].collection_slug})`, inline: false },
+                  { name: '`Floor Price`', value: `${JSON.stringify(Math.round(response.data.rankings[4].statistics.floor * 1000) /1000)}`, inline: true },
+                  { name: '`7 Day Volume`', value: `${JSON.stringify(Math.round(response.data.rankings[4].statistics.sevenDayVolume* 1) /1)}`, inline: true },
+                  { name: '`1 Day Volume`', value: `${JSON.stringify(Math.round(response.data.rankings[4].statistics.oneDayVolume* 1) /1)}`, inline: true },
+                  )
+                .setTimestamp()
+            messageCreate.channel.send({embeds: [infoEmbed2]})
+        })
+    }
+})
+
+
+client.on('message', async (message) => {
+    const args = message.content.trim().split(/ +/g);
+    const cmd = args[0].slice(prefix.length).toLowerCase();
+    if(message.author.bot) return;
+    if(cmd == "collection") { 
+    axios.get(`https://api.modulenft.xyz/api/v1/opensea/collection/info?type=${args[1]}`, {
+            headers: {
+                'Accept': 'application/json',
+            }
+            }).then(response => {
+            console.log(response.data);
+            const infoEmbed2 = new MessageEmbed()
+                .setColor('#ffffff')
+                .setTitle(`Collection: ${response.data.collection}`)
+                .setDescription(`${response.data.info.description}`)
+                .setImage(`${response.data.info.bannerImageUrl}`)
+                .setThumbnail(`${response.data.info.imageUrl}`)
+                .setFooter("Lumiere Tools",'https://media.discordapp.net/attachments/943189337766506557/964903847392870430/Lumiere_AI_logo.png?width=1365&height=1365')
+                .addFields()
+                .addFields(
+                  { name: '`Verified:`', value: `${response.data.info.isVerified}`, inline: true },
+                  { name: '`Name:`', value: `${response.data.info.name}`, inline: true },
+                  { name: '`Owner:`', value: `${response.data.info.owner.displayName}`, inline: true },
+                  { name: '`Floor Price:`', value: `${JSON.stringify(Math.round(response.data.info.statistics.floorPrice.unit * 1000) /1000)}`, inline: true },
+                  { name: '`Total Supply:`', value: `${response.data.info.statistics.totalSupply}`, inline: true },
+                  { name: '`Social Media:`', value: `[Website](${response.data.info.externalUrl})\n[Discord](${response.data.info.discordUrl})\n[Twitter](https://twitter.com/${response.data.info.connectedTwitterUsername})`, inline: true },
+                  )
+                .setTimestamp()
+            message.channel.send({embeds: [infoEmbed2]})
+        })
+    }
+})
+
+
+client.on('message', async (message) => {
+    const args = message.content.trim().split(/ +/g);
+    const cmd = args[0].slice(prefix.length).toLowerCase();
+    if(message.author.bot) return;
+    if(cmd == "estimate") { 
+    axios.get(`https://api.modulenft.xyz/api/v1/opensea/token/value?tokenId=${args[1]}&collection=${args[2]}`, {
+            headers: {
+                'Accept': 'application/json',
+            }
+            }).then(response => {
+            console.log(response.data);
+            const infoEmbed2 = new MessageEmbed()
+                .setColor('#ffffff')
+                .setTitle(`NFT Estimate:`)
+                .setFooter('!!Experimental!!')
+                .setDescription(`The bot estimate's the value of an NFT by finding the highest floor-price out of all of its traits.`)
+              .setThumbnail('https://media.discordapp.net/attachments/943189337766506557/964903847392870430/Lumiere_AI_logo.png?width=1365&height=1365')
+                .addFields()
+                .addFields(
+                  { name: '`Trait Key:`', value: `**${response.data.info.traitKey}**`, inline: true },
+                  { name: '`Trait Value:`', value: `**${response.data.info.traitValue}**`, inline: true },
+                  { name: '`Price:`', value: `**${response.data.info.price}**`, inline: true },
+                  )
+                .setTimestamp()
+            message.channel.send({embeds: [infoEmbed2]})
+        })
+    }
+})
+
+client.on('message', async (message) => {
+    const args = message.content.trim().split(/ +/g);
+    const cmd = args[0].slice(prefix.length).toLowerCase();
+    if(message.author.bot) return;
+    if(cmd == "listing") { 
+    axios.get(`https://api.modulenft.xyz/api/v1/opensea/listings/new-listings?type=${args[1]}&count=1&currencySymbol=ETH`, {
+            headers: {
+                'Accept': 'application/json',
+            }
+            }).then(response => {
+            console.log(response.data);
+            const infoEmbed2 = new MessageEmbed()
+                .setColor('#ffffff')
+                .setTitle(`Latest Listing For ${response.data.collection}`)
+                .setDescription('')
+                .setImage(response.data.listings[0].image_url)
+                .addFields()
+                .setFooter("Lumiere Tools",'https://media.discordapp.net/attachments/943189337766506557/964903847392870430/Lumiere_AI_logo.png?width=1365&height=1365')
+                .setURL(response.data.listings[0].permalink)
+                .addFields(
+                  { name: 'Price:', value: `${response.data.listings[0].price}`, inline: false },
+                  { name: 'TokenId:', value: `${response.data.listings[0].tokenId}`, inline: false },
+                )
+                .setTimestamp()
+            message.channel.send({embeds: [infoEmbed2]})
+        })
+    }
 });
 
 client.login("TOKEN HERE");
