@@ -76,8 +76,9 @@ client.on('messageCreate', async (messageCreate) => {
                   )
                 .setTimestamp()
             messageCreate.channel.send({embeds: [infoEmbed2]})
-        })
-    }
+ } catch (err) {
+  console.log("An error occurred: " + err)
+}
 })
 
 client.on('messageCreate', async (messageCreate) => {
@@ -100,8 +101,9 @@ client.on('messageCreate', async (messageCreate) => {
                   )
                 .setTimestamp()
             messageCreate.channel.send({embeds: [infoEmbed2]})
-        })
-    }
+ } catch (err) {
+  console.log("An error occurred: " + err)
+}
 })
 
 client.on('messageCreate', async (messageCreate) => {
@@ -124,8 +126,9 @@ client.on('messageCreate', async (messageCreate) => {
                   )
                 .setTimestamp()
             messageCreate.channel.send({embeds: [infoEmbed2]})
-        })
-    }
+ } catch (err) {
+  console.log("An error occurred: " + err)
+}
 })
 
 client.on('messageCreate', async (messageCreate) => {
@@ -148,8 +151,9 @@ client.on('messageCreate', async (messageCreate) => {
                   )
                 .setTimestamp()
             messageCreate.channel.send({embeds: [infoEmbed2]})
-        })
-    }
+ } catch (err) {
+  console.log("An error occurred: " + err)
+}
 })
 
 client.on('messageCreate', async (messageCreate) => {
@@ -172,8 +176,9 @@ client.on('messageCreate', async (messageCreate) => {
                   )
                 .setTimestamp()
             messageCreate.channel.send({embeds: [infoEmbed2]})
-        })
-    }
+ } catch (err) {
+  console.log("An error occurred: " + err)
+}
 })
 
 client.on('messageCreate', async (messageCreate) => {
@@ -195,8 +200,9 @@ client.on('messageCreate', async (messageCreate) => {
                   )
                 .setTimestamp()
             messageCreate.channel.send({embeds: [infoEmbed2]})
-        })
-    }
+ } catch (err) {
+  console.log("An error occurred: " + err)
+}
 })
 
 client.on('messageCreate', async (messageCreate) => {
@@ -220,8 +226,9 @@ client.on('messageCreate', async (messageCreate) => {
                   )
                 .setTimestamp()
             messageCreate.channel.send({embeds: [infoEmbed2]})
-        })
-    }
+ } catch (err) {
+  console.log("An error occurred: " + err)
+}
 })
 
 client.on('messageCreate', async (messageCreate) => {
@@ -261,8 +268,9 @@ client.on('messageCreate', async (messageCreate) => {
                   )
                 .setTimestamp()
             messageCreate.channel.send({embeds: [infoEmbed2]})
-        })
-    }
+ } catch (err) {
+  console.log("An error occurred: " + err)
+}
 })
 
 
@@ -296,8 +304,9 @@ client.on('message', async (message) => {
                   )
                 .setTimestamp()
             message.channel.send({embeds: [infoEmbed2]})
-        })
-    }
+ } catch (err) {
+  console.log("An error occurred: " + err)
+}
 })
 
 
@@ -327,8 +336,9 @@ client.on('message', async (message) => {
                   )
                 .setTimestamp()
             message.channel.send({embeds: [infoEmbed2]})
-        })
-    }
+ } catch (err) {
+  console.log("An error occurred: " + err)
+}
 })
 
 client.on('message', async (message) => {
@@ -357,10 +367,10 @@ client.on('message', async (message) => {
                 )
                 .setTimestamp()
             message.channel.send({embeds: [infoEmbed2]})
-        })
-    }
+ } catch (err) {
+  console.log("An error occurred: " + err)
+}
 })
-
 client.on('message', async (message) => {
     const args = message.content.trim().split(/ +/g);
     const cmd = args[0].slice(prefix.length).toLowerCase();
@@ -389,8 +399,9 @@ client.on('message', async (message) => {
                 )
                 .setTimestamp()
             message.channel.send({embeds: [infoEmbed2]})
-        })
-    }
+ } catch (err) {
+  console.log("An error occurred: " + err)
+}
 })
 
 client.on('message', async (message) => {
@@ -425,23 +436,9 @@ client.on('message', async (message) => {
                 )
                 .setTimestamp()
             message.channel.send({embeds: [infoEmbed]})
-        }).catch(function (error) {
-        // Catch errors
-        if (error.response) {
-            let errorMessage = notFoundError;
-            // If statuscode is different from 404, send the statuscode to the user.
-            if (error.response.status !== 404) {
-                errorMessage = `:monkey_face: **${error.response.status}** Please try again later.`;
-            }
-            // Send error message
-            message.channel.send(`${errorMessage}`);
-        } else if (error.request) {
-            message.channel.send(`:monkey_face: **Request Error**`);
-        } else {
-            message.channel.send(`:monkey_face: **${error.message}**`);
-        }
-    })
+ } catch (err) {
+  console.log("An error occurred: " + err)
 }
-});
+})
 
 client.login("TOKEN HERE");
