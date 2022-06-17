@@ -428,6 +428,7 @@ client.on('message', async (message) => {
             message.channel.send(`:monkey_face: **${error.message}**`);
         }
     })
-};
+}
+});
 
 client.login("TOKEN HERE");
