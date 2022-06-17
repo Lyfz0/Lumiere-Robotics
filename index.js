@@ -22,7 +22,7 @@ client.on('message', async (message) => {
 try{
       headers = {
     "Accept": "application/json",
-    "X-API-KEY": "6c95b250-38c8-4dda-b3cc-4b584e30dbdb"
+    "X-API-KEY": "MODULE API KEY HERE"
 }
     const args = message.content.trim().split(/ +/g);
     const cmd = args[0].slice(prefix.length).toLowerCase();
@@ -56,9 +56,10 @@ try{
 client.on('messageCreate', async (messageCreate) => {
   if (messageCreate.content === '!lumiere help') {
     axios.get(`https://api.opensea.io/api/v1/collection/boredapeyachtclub`, {
-            headers: {
-                'Accept': 'application/json',
-            }
+      headers = {
+    "Accept": "application/json",
+    "X-API-KEY": "MODULE API KEY HERE"
+}
             }).then(response => {
             console.log(response.data);
             const infoEmbed2 = new MessageEmbed()
@@ -82,9 +83,10 @@ client.on('messageCreate', async (messageCreate) => {
 client.on('messageCreate', async (messageCreate) => {
   if (messageCreate.content === '!help scrape') {
     axios.get(`https://api.opensea.io/api/v1/collection/boredapeyachtclub`, {
-            headers: {
-                'Accept': 'application/json',
-            }
+      headers = {
+    "Accept": "application/json",
+    "X-API-KEY": "MODULE API KEY HERE"
+}
             }).then(response => {
             console.log(response.data);
             const infoEmbed2 = new MessageEmbed()
@@ -105,9 +107,10 @@ client.on('messageCreate', async (messageCreate) => {
 client.on('messageCreate', async (messageCreate) => {
   if (messageCreate.content === '!help collection') {
     axios.get(`https://api.opensea.io/api/v1/collection/boredapeyachtclub`, {
-            headers: {
-                'Accept': 'application/json',
-            }
+      headers = {
+    "Accept": "application/json",
+    "X-API-KEY": "MODULE API KEY HERE"
+}
             }).then(response => {
             console.log(response.data);
             const infoEmbed2 = new MessageEmbed()
@@ -128,9 +131,10 @@ client.on('messageCreate', async (messageCreate) => {
 client.on('messageCreate', async (messageCreate) => {
   if (messageCreate.content === '!help sale') {
     axios.get(`https://api.opensea.io/api/v1/collection/boredapeyachtclub`, {
-            headers: {
-                'Accept': 'application/json',
-            }
+       headers = {
+    "Accept": "application/json",
+    "X-API-KEY": "MODULE API KEY HERE"
+}
             }).then(response => {
             console.log(response.data);
             const infoEmbed2 = new MessageEmbed()
@@ -151,9 +155,10 @@ client.on('messageCreate', async (messageCreate) => {
 client.on('messageCreate', async (messageCreate) => {
   if (messageCreate.content === '!help listing') {
     axios.get(`https://api.opensea.io/api/v1/collection/boredapeyachtclub`, {
-            headers: {
-                'Accept': 'application/json',
-            }
+      headers = {
+    "Accept": "application/json",
+    "X-API-KEY": "MODULE API KEY HERE"
+}
             }).then(response => {
             console.log(response.data);
             const infoEmbed2 = new MessageEmbed()
@@ -174,9 +179,10 @@ client.on('messageCreate', async (messageCreate) => {
 client.on('messageCreate', async (messageCreate) => {
   if (messageCreate.content === '!help trending') {
     axios.get(`https://api.opensea.io/api/v1/collection/boredapeyachtclub`, {
-            headers: {
-                'Accept': 'application/json',
-            }
+      headers = {
+    "Accept": "application/json",
+    "X-API-KEY": "MODULE API KEY HERE"
+}
             }).then(response => {
             console.log(response.data);
             const infoEmbed2 = new MessageEmbed()
@@ -196,9 +202,10 @@ client.on('messageCreate', async (messageCreate) => {
 client.on('messageCreate', async (messageCreate) => {
   if (messageCreate.content === '!help estimate') {
     axios.get(`https://api.opensea.io/api/v1/collection/boredapeyachtclub`, {
-            headers: {
-                'Accept': 'application/json',
-            }
+      headers = {
+    "Accept": "application/json",
+    "X-API-KEY": "MODULE API KEY HERE"
+}
             }).then(response => {
             console.log(response.data);
             const infoEmbed2 = new MessageEmbed()
@@ -220,9 +227,10 @@ client.on('messageCreate', async (messageCreate) => {
 client.on('messageCreate', async (messageCreate) => {
   if (messageCreate.content === '!trending') {
     axios.get(`https://api.modulenft.xyz/api/v1/opensea/collection/rankings?sort_by=SEVEN_DAY_VOLUME&count=5&offset=0`, {
-            headers: {
-                'Accept': 'application/json',
-            }
+      headers = {
+    "Accept": "application/json",
+    "X-API-KEY": "MODULE API KEY HERE"
+}
             }).then(response => {
             console.log(response.data);
             const infoEmbed2 = new MessageEmbed()
@@ -264,9 +272,10 @@ client.on('message', async (message) => {
     if(message.author.bot) return;
     if(cmd == "collection") { 
     axios.get(`https://api.modulenft.xyz/api/v1/opensea/collection/info?type=${args[1]}`, {
-            headers: {
-                'Accept': 'application/json',
-            }
+      headers = {
+    "Accept": "application/json",
+    "X-API-KEY": "MODULE API KEY HERE"
+}
             }).then(response => {
             console.log(response.data);
             const infoEmbed2 = new MessageEmbed()
@@ -298,9 +307,10 @@ client.on('message', async (message) => {
     if(message.author.bot) return;
     if(cmd == "estimate") { 
     axios.get(`https://api.modulenft.xyz/api/v1/opensea/token/value?tokenId=${args[1]}&collection=${args[2]}`, {
-            headers: {
-                'Accept': 'application/json',
-            }
+      headers = {
+    "Accept": "application/json",
+    "X-API-KEY": "MODULE API KEY HERE"
+}
             }).then(response => {
             console.log(response.data);
             const infoEmbed2 = new MessageEmbed()
@@ -327,9 +337,10 @@ client.on('message', async (message) => {
     if(message.author.bot) return;
     if(cmd == "listing") { 
     axios.get(`https://api.modulenft.xyz/api/v1/opensea/listings/new-listings?type=${args[1]}&count=1&currencySymbol=ETH`, {
-            headers: {
-                'Accept': 'application/json',
-            }
+      headers = {
+    "Accept": "application/json",
+    "X-API-KEY": "MODULE API KEY HERE"
+}
             }).then(response => {
             console.log(response.data);
             const infoEmbed2 = new MessageEmbed()
@@ -356,9 +367,10 @@ client.on('message', async (message) => {
     if(message.author.bot) return;
     if(cmd == "sale") { 
     axios.get(`https://api.modulenft.xyz/api/v1/opensea/orders/sales?type=${args[1]}&count=20&currencySymbol=ETH`, {
-            headers: {
-                'Accept': 'application/json',
-            }
+      headers = {
+    "Accept": "application/json",
+    "X-API-KEY": "MODULE API KEY HERE"
+}
             }).then(response => {
             console.log(response.data);
             const infoEmbed2 = new MessageEmbed()
@@ -387,9 +399,10 @@ client.on('message', async (message) => {
     if(message.author.bot) return;
     if(cmd == "scrape") { 
         axios.get(`https://api.opensea.io/api/v1/collection/${args[1]}`, {
-            headers: {
-                'Accept': 'application/json',
-            }
+      headers = {
+    "Accept": "application/json",
+    "X-API-KEY": "MODULE API KEY HERE"
+}
             }).then(response => {
             console.log(response.data);
             const infoEmbed = new MessageEmbed()
