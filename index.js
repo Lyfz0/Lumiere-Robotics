@@ -348,6 +348,86 @@ client.on('message', async (message) => {
             message.channel.send({embeds: [infoEmbed2]})
         })
     }
-});
+})
+
+client.on('message', async (message) => {
+    const args = message.content.trim().split(/ +/g);
+    const cmd = args[0].slice(prefix.length).toLowerCase();
+    if(message.author.bot) return;
+    if(cmd == "sale") { 
+    axios.get(`https://api.modulenft.xyz/api/v1/opensea/orders/sales?type=${args[1]}&count=20&currencySymbol=ETH`, {
+            headers: {
+                'Accept': 'application/json',
+            }
+            }).then(response => {
+            console.log(response.data);
+            const infoEmbed2 = new MessageEmbed()
+                .setColor('#ffffff')
+                .setTitle(`Latest Sale For ${response.data.collection}`)
+                .setDescription('')
+                .setImage(response.data.sales[0].image_url)
+                .addFields()
+                .setFooter("Lumiere Tools",'https://media.discordapp.net/attachments/943189337766506557/964903847392870430/Lumiere_AI_logo.png?width=1365&height=1365')
+                .setURL(response.data.sales[0].permalink)
+                .addFields(
+                  { name: 'Price:', value: `${response.data.sales[0].price}`, inline: false },
+                  { name: 'TokenId:', value: `${response.data.sales[0].tokenId}`, inline: false },
+                  { name: 'From:', value: `[${response.data.sales[0].from}](https://etherscan.io/address/${response.data.sales[0].from})`, inline: false },
+                { name: 'To:', value: `[${response.data.sales[0].to}](https://etherscan.io/address/${response.data.sales[0].to})`, inline: false },
+                )
+                .setTimestamp()
+            message.channel.send({embeds: [infoEmbed2]})
+        })
+    }
+})
+
+client.on('message', async (message) => {
+    const args = message.content.trim().split(/ +/g);
+    const cmd = args[0].slice(prefix.length).toLowerCase();
+    if(message.author.bot) return;
+    if(cmd == "scrape") { 
+        axios.get(`https://api.opensea.io/api/v1/collection/${args[1]}`, {
+            headers: {
+                'Accept': 'application/json',
+            }
+            }).then(response => {
+            console.log(response.data);
+            const infoEmbed = new MessageEmbed()
+                .setColor('#ffffff')
+                .setTitle(response.data.collection.name)
+                .setDescription('Stats (24 hours; 7 days; 30 days)')
+                .setURL(response.data.collection.external_url)
+                .setThumbnail(response.data.collection.image_url)
+                .setImage(response.data.collection.large_image_url)
+  .setFooter("Lumiere Tools",'https://media.discordapp.net/attachments/943189337766506557/964903847392870430/Lumiere_AI_logo.png?width=1365&height=1365')
+                .addFields(
+                    { name: 'Total Quantity:', value: `${response.data.collection.stats.count}`, inline: false },
+                    { name: 'Floor Price:', value: `${Math.round(response.data.collection.stats.floor_price * 1000) /1000}Ξ `, inline: false },
+                    { name: 'One Day Sales:', value: `${response.data.collection.stats.one_day_sales}`, inline: false },
+                    { name: 'One Day Average Price:', value: `${Math.round(response.data.collection.stats.one_day_average_price * 1000) /1000}Ξ | ${Math.round(response.data.collection.stats.one_day_change* 1000) /1000}%`, inline: false },
+                    { name: 'Seven Day Sales:', value: `${response.data.collection.stats.seven_day_sales}`, inline: false },
+                    { name: 'Seven Day Average Price:', value: `${Math.round(response.data.collection.stats.seven_day_average_price * 1000) /1000}Ξ | ${Math.round(response.data.collection.stats.seven_day_change* 1000) /1000}%`, inline: false },
+                    { name: 'Thirty Day Sales:', value: `${response.data.collection.stats.thirty_day_sales}`, inline: false },
+                    { name: 'Thirty Day Average price:', value: `${Math.round(response.data.collection.stats.thirty_day_average_price * 1000) /1000}Ξ | ${Math.round(response.data.collection.stats.thirty_day_change* 1000) /1000}%`, inline: false },
+                )
+                .setTimestamp()
+            message.channel.send({embeds: [infoEmbed]})
+        }).catch(function (error) {
+        // Catch errors
+        if (error.response) {
+            let errorMessage = notFoundError;
+            // If statuscode is different from 404, send the statuscode to the user.
+            if (error.response.status !== 404) {
+                errorMessage = `:monkey_face: **${error.response.status}** Please try again later.`;
+            }
+            // Send error message
+            message.channel.send(`${errorMessage}`);
+        } else if (error.request) {
+            message.channel.send(`:monkey_face: **Request Error**`);
+        } else {
+            message.channel.send(`:monkey_face: **${error.message}**`);
+        }
+    })
+};
 
 client.login("TOKEN HERE");
