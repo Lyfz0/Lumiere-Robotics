@@ -429,23 +429,8 @@ client.on('message', async (message) => {
                     { name: 'Thirty Day Average price:', value: `${Math.round(response.data.collection.stats.thirty_day_average_price * 1000) /1000}Ξ | ${Math.round(response.data.collection.stats.thirty_day_change* 1000) /1000}%`, inline: false },
                 )
                 .setTimestamp()
-            message.channel.send({embeds: [infoEmbed]}).catch (err) 
-        }).catch(function (error) {
-        // Catch errors
-        if (error.response) {
-            let errorMessage = notFoundError;
-            // If statuscode is different from 404, send the statuscode to the user.
-            if (error.response.status !== 404) {
-                errorMessage = `:monkey_face: **${error.response.status}** Please try again later.`;
-            }
-            // Send error message
-            message.channel.send(`${errorMessage}`);
-        } else if (error.request) {
-            message.channel.send(`:monkey_face: **Request Error**`);
-        } else {
-            message.channel.send(`:monkey_face: **${error.message}**`);
-        }
-    })
+            message.channel.send({embeds: [infoEmbed2]})}).catch (err) 
+  console.log("An error occurred: " + err)
 }
 })
 })
