@@ -23,3 +23,6 @@ This bot is still in development and i will add more commands in the future, if 
 
 - `!trending (Will send an embed with the top 5 collections with the most seven day volume!)` ->
 ![image](https://user-images.githubusercontent.com/96566434/174285456-f450bf1f-8beb-4434-b235-1fa068dd1d03.png)
+
+- `!collection [Collection Slug (look below for example)] (Will send an embed with basic statistics and info of an NFT collection)` ->
+![image](https://user-images.githubusercontent.com/96566434/174487706-32524424-8768-4d31-bc9b-637b903a53b1.png)
